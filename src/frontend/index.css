@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay[wght].woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-Italic[wght].woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/assets/fonts/InstrumentSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/assets/fonts/InstrumentSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ReelApp Dark Theme — Electric Pink / Obsidian */
+    --background: 0.08 0 0;
+    --foreground: 0.97 0 0;
+    --card: 0.11 0 0;
+    --card-foreground: 0.97 0 0;
+    --popover: 0.13 0 0;
+    --popover-foreground: 0.97 0 0;
+
+    /* Electric Pink as primary */
+    --primary: 0.62 0.26 0;
+    --primary-foreground: 0.98 0 0;
+
+    /* Dark grey secondary */
+    --secondary: 0.18 0 0;
+    --secondary-foreground: 0.97 0 0;
+
+    --muted: 0.14 0 0;
+    --muted-foreground: 0.55 0 0;
+
+    /* Cyan accent */
+    --accent: 0.75 0.18 200;
+    --accent-foreground: 0.06 0 0;
+
+    --destructive: 0.62 0.22 15;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.22 0 0;
+    --input: 0.18 0 0;
+    --ring: 0.62 0.26 0;
+
+    --chart-1: 0.62 0.26 0;
+    --chart-2: 0.75 0.18 200;
+    --chart-3: 0.7 0.2 140;
+    --chart-4: 0.65 0.22 280;
+    --chart-5: 0.8 0.15 60;
+
+    --sidebar: 0.10 0 0;
+    --sidebar-foreground: 0.97 0 0;
+    --sidebar-primary: 0.62 0.26 0;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.18 0 0;
+    --sidebar-accent-foreground: 0.97 0 0;
+    --sidebar-border: 0.22 0 0;
+    --sidebar-ring: 0.62 0.26 0;
+
+    /* App-specific tokens */
+    --reel-pink: 0.62 0.26 0;
+    --reel-cyan: 0.75 0.18 200;
+    --reel-overlay: 0.06 0 0;
+    --reel-nav-bg: 0.09 0 0;
+    --reel-video-bg: 0.05 0 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow: hidden;
+    height: 100dvh;
+  }
+
+  #root {
+    height: 100dvh;
+    overflow: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .snap-y-mandatory {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .snap-start-always {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .video-gradient-overlay {
+    background: linear-gradient(
+      to top,
+      oklch(0.06 0 0 / 0.9) 0%,
+      oklch(0.06 0 0 / 0.5) 35%,
+      transparent 65%
+    );
+  }
+
+  .reel-pink {
+    color: oklch(var(--reel-pink));
+  }
+
+  .bg-reel-pink {
+    background-color: oklch(var(--reel-pink));
+  }
+
+  .reel-cyan {
+    color: oklch(var(--reel-cyan));
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 20px oklch(var(--reel-pink) / 0.6);
+  }
+
+  .btn-glow-pink:hover {
+    box-shadow: 0 0 20px oklch(var(--reel-pink) / 0.4);
+  }
+
+  /* Splash screen tokens */
+  .splash-bg {
+    background: radial-gradient(ellipse at center, #3a1f7a 0%, #1a0a4a 40%, #0d0530 100%);
+  }
+
+  .gold-text {
+    background: linear-gradient(180deg, #ffe566 0%, #f5a623 40%, #d4820a 70%, #ffe566 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .lavender-text {
+    background: linear-gradient(135deg, #e0c8ff 0%, #b89eff 40%, #9b7fe8 70%, #d4b8ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .star-glow {
+    filter: drop-shadow(0 0 20px rgba(245, 166, 35, 0.6)) drop-shadow(0 0 40px rgba(245, 166, 35, 0.3));
+  }
+
+  .btn-play-now {
+    background: linear-gradient(135deg, #ff8c00 0%, #ffb800 50%, #ff6b00 100%);
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.5), 0 4px 20px rgba(255, 140, 0, 0.3);
+  }
+
+  .btn-play-now:hover {
+    background: linear-gradient(135deg, #ffa500 0%, #ffc800 50%, #ff7b00 100%);
+    box-shadow: 0 0 50px rgba(255, 140, 0, 0.7), 0 4px 30px rgba(255, 140, 0, 0.5);
+    transform: scale(1.03);
+  }
+
+  .btn-play-now:active {
+    transform: scale(0.98);
+  }
+}
